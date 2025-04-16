@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-=d$g3(u!)ao4!w8o_4n@q-3!9vf9nrenmxhvu%z5tk!h7dc7&3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'securing-django-token.onrender.com'
+]
 
 
 # Application definition
@@ -40,6 +44,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
+    'blog',
     
 ]
 
@@ -53,6 +59,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
